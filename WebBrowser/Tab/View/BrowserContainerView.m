@@ -30,7 +30,7 @@
 
 static CGFloat const kArrowActivitySize = 30.f;
 static NSInteger const kActionSheetTitleMaxLength = 120;
-static NSString *const kBaiduSearchPath = @"https://m.baidu.com/s?ie=utf-8&word=";
+static NSString *const kBaiduSearchPath = @"https://onbibi.com/search?q=";
 
 @interface BrowserContainerView () <WebViewDelegate, MenuHelperInterface, BrowserContainerLoadURLDelegate, BrowserWebViewDelegate, FindInPageBarDelegate>
 

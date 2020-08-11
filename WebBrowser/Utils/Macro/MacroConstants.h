@@ -20,11 +20,11 @@
 
 #define TEXT_FIELD_PLACEHOLDER   @"搜索或输入网址"
 
-#define BAIDU_SEARCH_URL @"https://m.baidu.com/s?word=%@&ie=utf-8"
+#define BAIDU_SEARCH_URL @"https://onbibi.com/search?q=%@"
 
 #define DEFAULT_IMAGE @"default"
 #define DEFAULT_CARD_CELL_IMAGE @"baidu"
-#define DEFAULT_CARD_CELL_URL   @"about:homepage"
+#define DEFAULT_CARD_CELL_URL   @"https://onbibi.com/search"
 #define DEFAULT_CARD_CELL_TITLE @"百度一下"
 
 #pragma mark - Notification

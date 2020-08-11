@@ -20,7 +20,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(HTTPURLConfiguration)
 
 - (id)init{
     if (self = [super init]) {
-        _baiduDomain = @"https://m.baidu.com/su?&from=wise_web&action=opensearch&ie=utf-8&wd=";
+        _baiduDomain = @"http://suggestqueries.google.com/complete/search?output=firefox&q=";
     }
     
     return self;

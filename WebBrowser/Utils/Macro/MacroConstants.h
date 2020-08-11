@@ -24,7 +24,7 @@
 
 #define DEFAULT_IMAGE @"default"
 #define DEFAULT_CARD_CELL_IMAGE @"baidu"
-#define DEFAULT_CARD_CELL_URL   @"https://onbibi.com/search"
+#define DEFAULT_CARD_CELL_URL   @"about:homepage"
 #define DEFAULT_CARD_CELL_TITLE @"百度一下"
 
 #pragma mark - Notification

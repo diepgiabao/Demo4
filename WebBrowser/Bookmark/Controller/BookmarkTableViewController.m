@@ -19,7 +19,7 @@ static CGFloat const kBookmarkTableHeaderViewHeader = 34;
 static NSString *const kBookmarkTableViewCellIdentifier = @"kBookmarkTableViewCellIdentifier";
 static NSString *const kBookmarkSectionTableViewCellIdentifier = @"kBookmarkSectionTableViewCellIdentifier";
 static NSString *const kBookmarkTableViewHeaderFooterIdentifier = @"kBookmarkTableViewHeaderFooterIdentifier";
-static NSString *const kEditToolBarItem = @"编辑";
+static NSString *const kEditToolBarItem = @"Edit";
 
 typedef NS_ENUM(NSUInteger, BookmarkTableState) {
     BookmarkTableStateNormal,
@@ -64,7 +64,7 @@ typedef NS_ENUM(NSUInteger, BookmarkTableState) {
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [self addToolbarEditBtn];
-    self.title = @"收藏";
+    self.title = @"Favorites";
 }
 
 - (void)initData{
@@ -223,14 +223,14 @@ typedef NS_ENUM(NSUInteger, BookmarkTableState) {
 }
 
 - (void)addToolbarEditBtn{
-    UIBarButtonItem *sectionEditItem = [[UIBarButtonItem alloc] initWithTitle:@"编辑文件夹" style:UIBarButtonItemStylePlain target:self action:@selector(handleSectionEditBtnClicked)];
-    UIBarButtonItem *editItem = [[UIBarButtonItem alloc] initWithTitle:@"编辑书签" style:UIBarButtonItemStylePlain target:self action:@selector(handleEditBtnClicked)];
+    UIBarButtonItem *sectionEditItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit folder" style:UIBarButtonItemStylePlain target:self action:@selector(handleSectionEditBtnClicked)];
+    UIBarButtonItem *editItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit bookmark" style:UIBarButtonItemStylePlain target:self action:@selector(handleEditBtnClicked)];
     UIBarButtonItem *flexibleItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     [self setToolbarItems:@[sectionEditItem, flexibleItem, editItem] animated:YES];
 }
 
 - (void)addToolbarNewDirectoryAndDoneBtn{
-    UIBarButtonItem *newDirectoryItem = [[UIBarButtonItem alloc] initWithTitle:@"新文件夹" style:UIBarButtonItemStylePlain target:self action:@selector(handleNewDirectoryBtnClicked)];
+    UIBarButtonItem *newDirectoryItem = [[UIBarButtonItem alloc] initWithTitle:@"New folder" style:UIBarButtonItemStylePlain target:self action:@selector(handleNewDirectoryBtnClicked)];
     UIBarButtonItem *flexibleItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self  action:@selector(handleDoneBtnClicked)];
     [self setToolbarItems:@[newDirectoryItem, flexibleItem, doneItem] animated:YES];

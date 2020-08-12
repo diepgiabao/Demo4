@@ -41,9 +41,9 @@ static NSString *const kHistoryTableViewContentSize = @"contentSize";
     self.tableView.sectionHeaderHeight = kHistoryTableHeaderViewHeader;
     [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:kHistoryTableViewHeaderFooterIdentifier];
     
-    UIBarButtonItem *clearItem = [[UIBarButtonItem alloc] initWithTitle:@"清除所有" style:UIBarButtonItemStylePlain target:self action:@selector(handleClearAllHistory)];
+    UIBarButtonItem *clearItem = [[UIBarButtonItem alloc] initWithTitle:@"Clear all" style:UIBarButtonItemStylePlain target:self action:@selector(handleClearAllHistory)];
     self.navigationItem.rightBarButtonItem = clearItem;
-    self.title = @"历史";
+    self.title = @"History";
     
     UILongPressGestureRecognizer *longGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressGesture:)];
     [self.tableView addGestureRecognizer:longGesture];
@@ -87,15 +87,15 @@ static NSString *const kHistoryTableViewContentSize = @"contentSize";
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
-    UIAlertAction *copyTitleAction = [UIAlertAction actionWithTitle:@"拷贝标题" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+    UIAlertAction *copyTitleAction = [UIAlertAction actionWithTitle:@"Copy title" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         [self copyToPasteBoardWithString:model.title isURL:NO];
     }];
     
-    UIAlertAction *copyURLAction = [UIAlertAction actionWithTitle:@"拷贝链接" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+    UIAlertAction *copyURLAction = [UIAlertAction actionWithTitle:@"Copy link" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         [self copyToPasteBoardWithString:model.url isURL:YES];
     }];
     
-    UIAlertAction *openInNewWindowAction = [UIAlertAction actionWithTitle:@"新窗口打开" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+    UIAlertAction *openInNewWindowAction = [UIAlertAction actionWithTitle:@"Open in a new window" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         NSURL *url = [NSURL URLWithString:model.url];
         if (url) {
             [self.navigationController popViewControllerAnimated:NO];
@@ -104,11 +104,11 @@ static NSString *const kHistoryTableViewContentSize = @"contentSize";
         }
     }];
     
-    UIAlertAction *shareAction = [UIAlertAction actionWithTitle:@"分享" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-        [self.view showHUDWithMessage:@"Yep, 就是不想实现!"];
+    UIAlertAction *shareAction = [UIAlertAction actionWithTitle:@"Share it" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        [self.view showHUDWithMessage:@"Done!"];
     }];
     
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
     
     [@[copyTitleAction, copyURLAction, openInNewWindowAction, shareAction, cancelAction] enumerateObjectsUsingBlock:^(UIAlertAction *action, NSUInteger idx, BOOL *stop){
         [alert addAction:action];
@@ -135,19 +135,19 @@ static NSString *const kHistoryTableViewContentSize = @"contentSize";
     else{
         isSuccess = NO;
     }
-    [[BrowserVC navigationController].view showHUDAtBottomWithMessage:isSuccess ? @"拷贝成功":@"拷贝失败"];
+    [[BrowserVC navigationController].view showHUDAtBottomWithMessage:isSuccess ? @"Copy successfully":@"Copy failed"];
 }
 
 - (void)handleClearAllHistory{
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"您确定删除所有历史记录？" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Do you want to delete all history records?" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
-    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action){
+    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action){
         [self.historyDataManager deleleAllHistoryRecords];
         self.noMoreData = YES;
         [self addNoMoreDataViewIfNeeded];
         [self.tableView reloadData];
     }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){}];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){}];
     
     [alert addAction:defaultAction];
     [alert addAction:cancelAction];
@@ -157,7 +157,7 @@ static NSString *const kHistoryTableViewContentSize = @"contentSize";
 - (void)addNoMoreDataViewIfNeeded{
     if (self.noMoreData && !self.bottomNoMoreLabel) {
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
-        [label setText:@"没有更多历史访问记录"];
+        [label setText:@"No more data"];
         [label setTextAlignment:NSTextAlignmentCenter];
         [self.tableView addSubview:label];
         self.bottomNoMoreLabel = label;
@@ -267,7 +267,7 @@ static NSString *const kHistoryTableViewContentSize = @"contentSize";
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return @"删除";
+    return @"Delete";
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -42,7 +42,7 @@
 
 - (void)initUI{
     [super initUI];
-    self.title = @"文件夹";
+    self.title = @"Folder";
 }
 
 #pragma mark - Handle NavigationItem Clicked
@@ -51,7 +51,7 @@
     BookmarkEditTextFieldTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     NSString *name = cell.textField.text;
     if (!name || [name isEqualToString:@""]) {
-        [self.view showHUDWithMessage:@"文件夹名不能为空"];
+        [self.view showHUDWithMessage:@"The folder name cannot be empty"];
         return;
     }
     
@@ -65,7 +65,7 @@
             }
         }
         else if (self__){
-            [self__.view showHUDWithMessage:@"文件夹名不能重名"];
+            [self__.view showHUDWithMessage:@"Folder name cannot be the same"];
         }
     };
     

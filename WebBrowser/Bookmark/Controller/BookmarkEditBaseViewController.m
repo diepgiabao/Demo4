@@ -37,10 +37,10 @@ NSString *const kBookmarkEditTextFieldCellIdentifier = @"kBookmarkEditTextFieldC
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(exit)];
+    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(exit)];
     self.navigationItem.leftBarButtonItem = cancelItem;
     
-    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(handleDoneItemClicked)];
+    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(handleDoneItemClicked)];
     self.navigationItem.rightBarButtonItem = doneItem;
     
     UINavigationBar *navigationBar = self.navigationController.navigationBar;

@@ -26,8 +26,8 @@
 #import "NSURL+ZWUtility.h"
 #import "ExtentionsTableViewController.h"
 
-static NSString *const kBrowserViewControllerAddBookmarkSuccess = @"添加书签成功";
-static NSString *const kBrowserViewControllerAddBookmarkFailure = @"添加书签失败";
+static NSString *const kBrowserViewControllerAddBookmarkSuccess = @"Bookmark added successfully";
+static NSString *const kBrowserViewControllerAddBookmarkFailure = @"Failed to add bookmark";
 
 @interface BrowserViewController () <BrowserBottomToolBarButtonClickedDelegate, UIViewControllerRestoration, KeyboardHelperDelegate>
 
@@ -66,7 +66,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(BrowserViewController)
 - (void)initializeView{
     self.view.backgroundColor = UIColorFromRGB(0xF8F8F8);
     
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:nil action:nil];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"Return" style:UIBarButtonItemStylePlain target:nil action:nil];
     [self.navigationItem setBackBarButtonItem:backItem];
     
     self.browserContainerView = ({
@@ -216,22 +216,22 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(BrowserViewController)
         WEAK_REF(self)
         NSArray<SettingsMenuItem *> *items =
         @[
-          [SettingsMenuItem itemWithText:@"扩展" image:[UIImage imageNamed:@"album"] action:^{
+          [SettingsMenuItem itemWithText:@"Extension" image:[UIImage imageNamed:@"album"] action:^{
               [self_ pushTableViewControllerWithControllerName:[ExtentionsTableViewController class] style:UITableViewStyleGrouped];
           }],
-          [SettingsMenuItem itemWithText:@"加入书签" image:[UIImage imageNamed:@"album"] action:^{
+          [SettingsMenuItem itemWithText:@"Add Bookmark" image:[UIImage imageNamed:@"album"] action:^{
               [self_ addBookmark];
           }],
-          [SettingsMenuItem itemWithText:@"书签" image:[UIImage imageNamed:@"album"] action:^{
+          [SettingsMenuItem itemWithText:@"Bookmarks" image:[UIImage imageNamed:@"album"] action:^{
               [self_ pushTableViewControllerWithControllerName:[BookmarkTableViewController class] style:UITableViewStylePlain];
           }],
-          [SettingsMenuItem itemWithText:@"历史" image:[UIImage imageNamed:@"album"] action:^{
+          [SettingsMenuItem itemWithText:@"History" image:[UIImage imageNamed:@"album"] action:^{
               [self_ pushTableViewControllerWithControllerName:[HistoryTableViewController class] style:UITableViewStylePlain];
           }],
-          [SettingsMenuItem itemWithText:@"设置" image:[UIImage imageNamed:@"album"] action:^{
+          [SettingsMenuItem itemWithText:@"Settings" image:[UIImage imageNamed:@"album"] action:^{
               [self_ pushTableViewControllerWithControllerName:[SettingsTableViewController class] style:UITableViewStylePlain];
           }],
-          [SettingsMenuItem itemWithText:@"拷贝连接" image:[UIImage imageNamed:@"album"] action:^{
+          [SettingsMenuItem itemWithText:@"Copy website link" image:[UIImage imageNamed:@"album"] action:^{
               [self_ handleCopyURLButtonClicked];
           }]
           ];
@@ -275,7 +275,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(BrowserViewController)
         success = YES;
     }
 
-    [self.view showHUDWithMessage:success ? @"拷贝成功" : @"拷贝失败"];
+    [self.view showHUDWithMessage:success ? @"Copy successfully" : @"Copy failed"];
 }
 
 - (void)addBookmark{

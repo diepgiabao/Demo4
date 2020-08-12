@@ -28,9 +28,9 @@ static NSString *const kSettingPlaceholderTableViewCellIdentifier   = @"SettingP
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"设置";
+    self.title = @"Settings";
     
-    self.dataArray = @[@"清除缓存"];
+    self.dataArray = @[@"Clear cache"];
     
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([SettingActivityTableViewCell class]) bundle:nil] forCellReuseIdentifier:kSettingActivityTableViewCellIdentifier];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kSettingPlaceholderTableViewCellIdentifier];
@@ -38,9 +38,9 @@ static NSString *const kSettingPlaceholderTableViewCellIdentifier   = @"SettingP
 
 - (void)handleTableViewSelectAt:(NSInteger)index{
     if (index == 0) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"您确定清除缓存？" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Do you want to clear the cache?" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         
-        UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action){
+        UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action){
             SettingActivityTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
             [cell.activityIndicatorView startAnimating];
             cell.rightLabel.text = @"";
@@ -50,7 +50,7 @@ static NSString *const kSettingPlaceholderTableViewCellIdentifier   = @"SettingP
                 [cell.rightLabel setText:@"0M"];
             }];
         }];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){}];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){}];
         
         [alert addAction:defaultAction];
         [alert addAction:cancelAction];

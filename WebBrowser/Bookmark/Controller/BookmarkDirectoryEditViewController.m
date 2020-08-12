@@ -42,7 +42,7 @@
 
 - (void)initUI{
     [super initUI];
-    self.title = @"文件夹";
+    self.title = @"Folder";
 }
 
 #pragma mark - Handle NavigationItem Clicked

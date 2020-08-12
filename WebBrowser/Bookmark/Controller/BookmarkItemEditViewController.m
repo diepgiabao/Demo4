@@ -52,7 +52,7 @@ typedef NS_ENUM(NSUInteger, BookmarkItemTextField) {
 
 - (void)initUI{
     [super initUI];
-    self.title = @"书签";
+    self.title = @"Bookmarks";
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kBookmarkItemEditSectionCellIdentifier];
 }
 
@@ -79,7 +79,7 @@ typedef NS_ENUM(NSUInteger, BookmarkItemTextField) {
 - (void)handleDoneItemClicked{
     BookmarkItemModel *itemModel = self.itemModel;
     if (!itemModel.title || [itemModel.title isEqualToString:@""] || !itemModel.url || [itemModel.url isEqualToString:@""]) {
-        [self.view showHUDWithMessage:@"标题或地址不能为空"];
+        [self.view showHUDWithMessage:@"Title or address cannot be empty"];
         return;
     }
     
@@ -93,7 +93,7 @@ typedef NS_ENUM(NSUInteger, BookmarkItemTextField) {
             }
         }
         else if (self__){
-            [self__.view showHUDWithMessage:@"操作失败"];
+            [self__.view showHUDWithMessage:@"Operation failed"];
         }
     };
     
@@ -112,7 +112,7 @@ typedef NS_ENUM(NSUInteger, BookmarkItemTextField) {
 #pragma mark - UITableViewDataSource
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    return (section == 1) ? @"位置" : nil;
+    return (section == 1) ? @"Position" : nil;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -131,12 +131,12 @@ typedef NS_ENUM(NSUInteger, BookmarkItemTextField) {
         UITextField *textField = [(BookmarkEditTextFieldTableViewCell *)cell textField];
         if (indexPath.row == 0) {
             [textField becomeFirstResponder];
-            textField.placeholder = @"标题";
+            textField.placeholder = @"Title";
             textField.text = self.itemModel.title;
             textField.tag = BookmarkItemTextFieldForTitle;
         }
         else{
-            textField.placeholder = @"地址";
+            textField.placeholder = @"URL";
             textField.text = self.itemModel.url;
             textField.tag = BookmarkItemTextFieldForURL;
         }

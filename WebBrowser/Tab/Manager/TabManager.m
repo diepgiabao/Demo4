@@ -615,9 +615,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(TabManager)
         if (credential && credential.user.length > 0) {
             [challenge.sender useCredential:credential forAuthenticationChallenge:challenge];
         } else if (challenge.protectionSpace.host.length > 0) {
-            UIAlertController *actionSheetController = [UIAlertController alertControllerWithTitle:@"网页认证" message:nil preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertController *actionSheetController = [UIAlertController alertControllerWithTitle:@"Web authentication" message:nil preferredStyle:UIAlertControllerStyleAlert];
             
-            UIAlertAction *loginAction = [UIAlertAction actionWithTitle:@"登陆" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            UIAlertAction *loginAction = [UIAlertAction actionWithTitle:@"Sign in" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 
                 NSString *user = actionSheetController.textFields[0].text;
                 NSString *pass = actionSheetController.textFields[1].text;
@@ -634,11 +634,11 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(TabManager)
             [actionSheetController addAction:cancelAction];
             
             [actionSheetController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-                textField.placeholder = @"用户名";
+                textField.placeholder = @"Username";
             }];
             
             [actionSheetController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-                textField.placeholder = @"密码";
+                textField.placeholder = @"Password";
                 textField.secureTextEntry = YES;
             }];
             
@@ -655,12 +655,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(TabManager)
 #pragma mark - SSL Error Handler
 
 - (void)handleSSLUntrustedWithWebView:(BrowserWebView *)webView{
-    UIAlertController *accessDenied = [UIAlertController alertControllerWithTitle:@"您的连接不是私密连接" message:[NSString stringWithFormat:@"攻击者可能会试图从 %@ 窃取您的信息（例如：密码、通讯内容或信用卡信息）。",webView.request.URL.host] preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *accessDenied = [UIAlertController alertControllerWithTitle:@"Your connection is not private" message:[NSString stringWithFormat:@"The attacker may try to steal your information from %@ (e.g. password, communication content or credit card information).",webView.request.URL.host] preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *dismissAction = [UIAlertAction actionDismiss];
     [accessDenied addAction:dismissAction];
     
-    UIAlertAction *continueAction = [UIAlertAction actionWithTitle:@"继续前往（不安全）" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+    UIAlertAction *continueAction = [UIAlertAction actionWithTitle:@"Continue (Dangerous)" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         URLConnectionDelegateProxy *proxy __attribute__((unused)) = [[URLConnectionDelegateProxy alloc] initWithURL:webView.request.URL success:^{
             [webView reload];
         } failure:nil];

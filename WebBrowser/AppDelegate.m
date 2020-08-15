@@ -51,13 +51,13 @@ static NSString * const kUserAgentOfiOS = @"Mozilla/5.0 (iPhone; CPU iPhone OS %
 }
 
 - (void)presentPasteboardChangedAlertWithURL:(NSURL *)url {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"新窗口打开剪切板网址" message:@"您是否需要在新窗口中打开剪切板中的网址？" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Open clipboard URL in new window" message:@"Do you want to open the URL in the clipboard in a new window?" preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action){
+    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action){
         NSNotification *notify = [NSNotification notificationWithName:kOpenInNewWindowNotification object:self userInfo:@{@"url": url}];
         [Notifier postNotification:notify];
     }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
     
     [alert addAction:defaultAction];
     [alert addAction:cancelAction];

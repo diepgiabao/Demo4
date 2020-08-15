@@ -18,14 +18,14 @@
 #define Card_Cell_Close_Width 50
 #define Card_Cell_Close_Height 50
 
-#define TEXT_FIELD_PLACEHOLDER   @"搜索或输入网址"
+#define TEXT_FIELD_PLACEHOLDER   @"Search or enter URL"
 
 #define BAIDU_SEARCH_URL @"https://onbibi.com/search?q=%@"
 
 #define DEFAULT_IMAGE @"default"
 #define DEFAULT_CARD_CELL_IMAGE @"baidu"
 #define DEFAULT_CARD_CELL_URL   @"https://onbibi.com"
-#define DEFAULT_CARD_CELL_TITLE @"百度一下"
+#define DEFAULT_CARD_CELL_TITLE @"Onbibi.com"
 
 #pragma mark - Notification
 // 无图模式

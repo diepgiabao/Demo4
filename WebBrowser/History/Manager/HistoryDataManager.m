@@ -8,9 +8,9 @@
 
 #import "HistoryDataManager.h"
 
-static NSString *const kTodayDate = @"今天";
-static NSString *const kYesterdayDate = @"昨天";
-static NSString *const kBeforeDate = @"以前";
+static NSString *const kTodayDate = @"today";
+static NSString *const kYesterdayDate = @"yesterday";
+static NSString *const kBeforeDate = @"days ago";
 static NSInteger const kLimit = 50;
 
 typedef void(^HistoryDataTempCompletion)(void);

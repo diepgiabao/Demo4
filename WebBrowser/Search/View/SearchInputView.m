@@ -19,7 +19,7 @@ typedef enum : NSUInteger {
     QuickInputButtonStateSecond,
 } QuickInputButtonState;
 
-#define CACEL_TITLE @"取消"
+#define CACEL_TITLE @"Cancel"
 
 @interface SearchInputView () <UITextFieldDelegate>
 

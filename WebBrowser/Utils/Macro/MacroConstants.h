@@ -24,7 +24,7 @@
 
 #define DEFAULT_IMAGE @"default"
 #define DEFAULT_CARD_CELL_IMAGE @"baidu"
-#define DEFAULT_CARD_CELL_URL   @"https://onbibi.com"
+#define DEFAULT_CARD_CELL_URL   @"https://onbibi.com/m"
 #define DEFAULT_CARD_CELL_TITLE @"Onbibi.com"
 
 #pragma mark - Notification

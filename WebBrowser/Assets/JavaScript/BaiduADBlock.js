@@ -33,13 +33,13 @@
  };
  
  function clearAD() {
-     var banners = document.querySelectorAll('#banner_call,#banner');
+     var banners = document.querySelectorAll('#banner');
      for (i = 0; i < banners.length; i++) {
          var banner = banners[i];
          banner.remove();
      }
  
-     var mAds = document.querySelectorAll(".ec_wise_ad,.ec_youxuan_card"),
+     var mAds = document.querySelectorAll(".p8AiDd,.C4eCVc"),
      i;
      for (i = 0; i < mAds.length; i++) {
          var mAd = mAds[i];
@@ -55,11 +55,11 @@
          } else {
              span = item.querySelector("div>span");
  
-             if (span && span.innerHTML == "广告") {
+             if (span && span.innerHTML == "Google") {
              item.remove();
          }
          [].forEach.call(item.querySelectorAll("a>span"), function (span) {
-                     if (span && (span.innerHTML == "广告" || span.getAttribute("data-tuiguang"))) {
+                     if (span && (span.innerHTML == "Google" || span.getAttribute("data-tuiguang"))) {
                          item.remove();
                      }
                      });
